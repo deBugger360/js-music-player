@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+    <link rel="stylesheet" href="css/font-awesome.css"/>
+    <title>Music Player</title>
+</head>
+<body>
+    <h1>JS Music Player</h1>
+    <div class="music-container">
+        <div class="music-info">
+            <h4><span class="song-title">Tempo</span> -  <span class="song-artiste">KB</span></h4>
+            <div class="progress-container">
+             <div class="progress"></div>
+            </div>
+            <div class="audio-timers">
+                <span class="current-time">00:00</span>
+                <!-- <span class="seprator"></span> -->
+                <span class="duration-time">00:00</span>
+            </div>
+        </div>
+        <div class="img-container">
+            <img src="/images/tomorrowwelive.jpg" alt="music-cover" class="cover-art" />
+        </div>
+        <div class="navigation">
+            <button class="prev action-btn" title="previous">
+                <i class="fa fa-fast-backward" aria-hidden="true"></i>
+            </button>
+            <button class="play action-btn action-btn-big" title="play">
+                <i class="fa fa-play" aria-hidden="true"></i>
+            </button>
+            <button class="next action-btn" title="next">
+                <i class="fa fa-fast-forward" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="controls"></div>
+        <button class="action-btn play-repeat-mode">
+            <i class="fa fa-repeat"></i>
+            <!-- <i class="fa fa-random"></i> -->
+        </button>
+        <button class="action-btn vol-btn">
+            <i class="fa fa-volume-up"></i>
+        </button>
+        <input type="range" class="vol-slider" min="0" max="100" value="0">
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>
