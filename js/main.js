@@ -1,24 +1,28 @@
 window.addEventListener("load", initializePlayer);
 
 function initializePlayer() {
-  const musicContainer = document.querySelector(".music-container"),
-  playBtn = document.querySelector(".play"),
-  prevBtn = document.querySelector(".prev"),
-  nextBtn = document.querySelector(".next"),
-  progress = document.querySelector(".progress"),
-  progressContainer = document.querySelector(".progress-container"),
-  volBtn = document.querySelector(".vol-btn i"),
-  volSlider = document.querySelector("input.vol-slider"),
-  playRepeatBtn = document.querySelector(".play-repeat-mode i"),
-  currentTimeLabel = document.querySelector(".current-time"),
-  durationTimeLabel = document.querySelector(".duration-time"),
+
+  const el = function(selector) {
+    return document.querySelector(selector);
+  }
+  const musicContainer = el(".music-container"),
+  playBtn = el(".play"),
+  prevBtn = el(".prev"),
+  nextBtn = el(".next"),
+  progress = el(".progress"),
+  progressContainer = el(".progress-container"),
+  volBtn = el(".vol-btn i"),
+  volSlider = el("input.vol-slider"),
+  playRepeatBtn = el(".play-repeat-mode i"),
+  currentTimeLabel = el(".current-time"),
+  durationTimeLabel = el(".duration-time"),
   audio = new Audio(), 
   ext = ".mp3",
   dir = "music/";
 
-  let songTitle = document.querySelector(".song-title"),
-  songArtiste = document.querySelector(".song-artiste"),
-  songCover = document.querySelector(".cover-art");
+  let songTitle = el(".song-title"),
+  songArtiste = el(".song-artiste"),
+  songCover = el(".cover-art");
 
   // Song playlist info. 
   const playlist = [{
@@ -64,6 +68,8 @@ function initializePlayer() {
   prevBtn.addEventListener("click", prevSong);
   audio.addEventListener("timeupdate", UpdateAudioTimeline);
   audio.addEventListener("ended", nextSong);
+  volSlider.addEventListener("change", changeVolume);
+  volSlider.addEventListener("input", changeVolume);
 
   // Next song
   function nextSong() {
@@ -118,8 +124,12 @@ function initializePlayer() {
     currentTimeLabel.innerText = formatTime(this.currentTime)
     
   }
+  // change volume function
+  function changeVolume() {
+    audio.volume = volSlider.value / 100;
+  }
 
-  // Format time
+  // Format time function
   function formatTime(time) {
     let secs = Math.floor(time % 60),
     mins = Math.floor(time / 60) % 60,
@@ -158,7 +168,7 @@ function initializePlayer() {
     if(!volBtn.classList.contains("fa-volume-up") || audio.muted) {
       // unmute audio by setting vol to 50%
       volBtn.classList.replace("fa-volume-off", "fa-volume-up");
-      audio.volume = 1;
+      audio.volume = 0.5;
     } else {
       // mute audio entire
       volBtn.classList.replace("fa-volume-up", "fa-volume-off");
@@ -170,6 +180,4 @@ function initializePlayer() {
   audio.addEventListener("loadeddata", function() {
     durationTimeLabel.innerText = formatTime(this.duration);
   });
-
-
 }
