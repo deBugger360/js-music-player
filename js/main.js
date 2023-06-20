@@ -58,11 +58,6 @@ function initializePlayer() {
   // Audio Object reference
   audio.src = dir+playlist[0].file+ext;
   
-  // // Song Info 
-  // songTitle = playlist[songIndex].title;
-  // songArtiste = playlist[songIndex].artiste;
-  // songCover = playlist[songIndex].cover;
-  
   // Event listeners
   nextBtn.addEventListener("click", nextSong);
   prevBtn.addEventListener("click", prevSong);
